@@ -99,18 +99,18 @@ sudo systemctl enable apache2
 ```
 echo "<html><body><h1>Welcome to My E-Commerce Site</h1></body></html>" | sudo tee /var/www/html/index.html
 ```
-# Create Public facing application load balancer & configure dns entry in Route53
+- Create Public facing application load balancer & configure dns entry in Route53
 
-# Check website is working or not 
+- Check website is working or not 
 https://web.awsguruji.net/
 
-# Enable Apache Reverse Proxy For Backend Server
+- Enable Apache Reverse Proxy For Backend Server
 
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo systemctl restart apache2
 
-# Edit Apache2 configuration for proxy  setup for backend server.
+- Edit Apache2 configuration for proxy  setup for backend server.
 
 cd /etc/apache2/sites-available/
 vim 000-default.conf
@@ -127,7 +127,7 @@ vim 000-default.conf
     ProxyPreserveHost On
     ProxyPass / http://10.0.130.64:8080/
     ProxyPassReverse / http://10.0.130.64:8080/
-	```
+```
 Note: 10.0.130.64 is a backend server private ip.
 
 # Check apache2 configuration syntax before restart service
