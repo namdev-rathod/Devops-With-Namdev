@@ -96,8 +96,9 @@ sudo systemctl enable apache2
 
 # One page website
 
+```
 echo "<html><body><h1>Welcome to My E-Commerce Site</h1></body></html>" | sudo tee /var/www/html/index.html
-
+```
 # Create Public facing application load balancer & configure dns entry in Route53
 
 # Check website is working or not 
@@ -114,6 +115,7 @@ sudo systemctl restart apache2
 cd /etc/apache2/sites-available/
 vim 000-default.conf
 
+```
 # Add below settings 
 
     <Directory /var/www/html>
@@ -125,7 +127,7 @@ vim 000-default.conf
     ProxyPreserveHost On
     ProxyPass / http://10.0.130.64:8080/
     ProxyPassReverse / http://10.0.130.64:8080/
-	
+	```
 Note: 10.0.130.64 is a backend server private ip.
 
 # Check apache2 configuration syntax before restart service
